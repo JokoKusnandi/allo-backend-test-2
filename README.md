@@ -74,11 +74,11 @@ The Strategy Pattern was chosen to handle multiple financial resource types in a
 
 Each resource is encapsulated in its own IDRDataFetcher implementation, which:
 
-Eliminates conditional logic (if/else or switch)
+- Eliminates conditional logic (if/else or switch)
 
-Adheres to the Open/Closed Principle
+- Adheres to the Open/Closed Principle
 
-Allows new resource types to be added without modifying controllers or services
+- Allows new resource types to be added without modifying controllers or services
 
 This results in a highly modular and scalable design.
 
@@ -88,15 +88,15 @@ A custom FactoryBean<WebClient> centralizes the creation and configuration of th
 
 Benefits include:
 
-Clear architectural boundaries
+- Clear architectural boundaries
 
-Avoidance of scattered client configuration
+- Avoidance of scattered client configuration
 
-Clean externalized configuration support
+- Clean externalized configuration support
 
-Greater control compared to a simple @Bean
+- Greater control compared to a simple @Bean
 
-This approach produces a cleaner and more maintainable infrastructure layer.
+- This approach produces a cleaner and more maintainable infrastructure layer.
 
 3️⃣ Why ApplicationRunner instead of @PostConstruct?
 
@@ -104,42 +104,42 @@ ApplicationRunner executes after the full Spring application context is initiali
 
 This ensures:
 
-All required beans are available before making external API calls
+- All required beans are available before making external API calls
 
-Startup behavior is explicit and predictable
+- Startup behavior is explicit and predictable
 
-Improved error handling and testability
+- Improved error handling and testability
 
-It is more suitable than @PostConstruct for startup workflows involving external dependencies.
+- It is more suitable than @PostConstruct for startup workflows involving external dependencies.
 
 ## 🧪 Testing Strategy
 ✅ Unit Tests
 
-Cover all IDRDataFetcher strategy implementations
+- Cover all IDRDataFetcher strategy implementations
 
-Validate business logic, including USD spread calculation
+- Validate business logic, including USD spread calculation
 
 ✅ Integration Tests
 
-Verify successful data loading at application startup
+- Verify successful data loading at application startup
 
-Ensure the in-memory store is populated before serving requests
+- Ensure the in-memory store is populated before serving requests
 
-Validate REST API behavior using WebTestClient
+- Validate REST API behavior using WebTestClient
 
 ## 🧾 Example API Usage
-curl -v http://localhost:9091/api/finance/data/latest_idr_rates
-curl -v http://localhost:9091/api/finance/data/historical_idr_usd
-curl -v http://localhost:9091/api/finance/data/supported_currencies
+- curl -v http://localhost:9091/api/finance/data/latest_idr_rates
+- curl -v http://localhost:9091/api/finance/data/historical_idr_usd
+- curl -v http://localhost:9091/api/finance/data/supported_currencies
 
 ✅ Code Review Readiness
 
-Clean and modular package structure
+- Clean and modular package structure
 
-Clear separation of concerns
+- Clear separation of concerns
 
-Atomic and descriptive commit history
+- Atomic and descriptive commit history
 
-Production-grade architecture
+- Production-grade architecture
 
-Fully tested and ready for immediate review
+- Fully tested and ready for immediate review
